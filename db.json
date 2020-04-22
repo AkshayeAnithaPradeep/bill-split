@@ -1,0 +1,48 @@
+{
+  "ocr": {
+    "status": "SUCCESS",
+    "total": 77.37,
+    "items": [
+      [
+        "Cheddar Pepper Burger",
+        10.89
+      ],
+      [
+        "Hickory Cheddar Burger",
+        10.69
+      ],
+      [
+        "Country Fried Steak",
+        11.69
+      ],
+      [
+        "Tortilla Soup - B",
+        9.49
+      ],
+      [
+        "Grilled Chicken",
+        10.79
+      ],
+      [
+        "Tortilla Soup - S",
+        5.99
+      ],
+      [
+        "Tax",
+        4.91
+      ],
+      [
+        "Service Fee",
+        8.93
+      ],
+      [
+        "Delivery Fee",
+        0.99
+      ],
+      [
+        "Tip",
+        3.00
+      ]
+    ]
+  }
+}
