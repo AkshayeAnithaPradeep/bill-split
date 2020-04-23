@@ -54,7 +54,7 @@ const SplitBill = props => {
     const [showSplit, setShowSplit] = React.useState(false);
     const {billData, members, updateMemberSplit} = props;
     const billItems = billData['items'].filter(item => {
-        return !['tax', 'tip', 'sales tax', 'delivery fee', 'service tax', 'service fee'].includes(item[0].toLowerCase())
+        return !['tax', 'tip', 'sales tax', 'delivery fee', 'service tax', 'service fee', 'subtotal'].includes(item[0].toLowerCase())
     });
 
     const [memberSplit, setMemberSplit] = React.useState([...Array(billItems.length)].map(() => []));

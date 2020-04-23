@@ -17,7 +17,7 @@ const BillUpload = props => {
             singleImage={true}
             onChange={onDrop}
             withLabel={true}
-            imgExtension={[".jpg", ".gif", ".png", ".gif"]}
+            imgExtension={[".jpg",".jpeg", ".gif", ".png", ".gif"]}
             maxFileSize={5242880}
         />
     )

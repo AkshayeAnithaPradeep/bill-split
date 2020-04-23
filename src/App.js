@@ -9,7 +9,17 @@ import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import {AddMembers, BillUpload, SplitBill, ViewSplit, Copyright} from './components';
+import {AddMembers, BillUpload, SplitBill, ViewSplit, Copyright, VerifyBill} from './components';
+import { css } from "@emotion/core";
+import PulseLoader from "react-spinners/PulseLoader";
+
+const override = css`
+  display: block;
+  margin: 0 auto;
+  border-color: red;
+  position: absolute;
+  right: 50%;
+`;
 
 const useStyles = makeStyles((theme) => ({
     appBar: {
@@ -48,7 +58,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const steps = ['Upload Bill', 'Add Members', 'Review Split', 'View Split'];
+const steps = ['Upload Bill', 'Verify Bill', 'Add Members', 'Review Split', 'View Split'];
 
 export default function App() {
     const classes = useStyles();
@@ -59,15 +69,17 @@ export default function App() {
     const [memberSplit, setMemberSplit] = React.useState([])
     const [error, setError] = React.useState('');
     const [finalBillState, setFinalBill] = React.useState({})
+    const [loading, setLoading] = React.useState(false)
 
     const billUpload = async() => {
-        console.log(billFile);
+        console.log(billFile[0]);
         if(billFile) {
+            setLoading(true);
             setError('');
             const formData = new FormData()
-            formData.append('file', billFile)
+            formData.append('file', billFile[0])
 
-            await fetch('http://192.168.99.100:8080/detect', {
+            await fetch('http://3.136.154.91/detect', {
                 method: 'POST',
                 body: formData
             })
@@ -76,6 +88,7 @@ export default function App() {
                     console.log(data)
                     if(data["status"] === "SUCCESS"){
                         setBillData(data);
+                        setLoading(false);
                         setActiveStep(activeStep + 1);
                     }else {
                         setError("File could not be read. Upload a better photo.")
@@ -109,16 +122,16 @@ export default function App() {
     const splitBill = async() => {
         let totalofItems = 0.0;
         const billItems = billData['items'].filter(item => {
-            return !['tax', 'tip', 'sales tax', 'delivery fee', 'service tax', 'service fee'].includes(item[0].toLowerCase())
+            return !['tax', 'tip', 'sales tax', 'delivery fee', 'service tax', 'service fee', 'subtotal'].includes(item[0].toLowerCase())
         });
         let finalBill = {}
         billItems.forEach((item, index) => {
-            totalofItems += item[1]
+            totalofItems += parseFloat(item[1])
             memberSplit[index].forEach(member => {
                 if(member in finalBill) {
-                    finalBill[member] += item[1]/memberSplit[index].length
+                    finalBill[member] += parseFloat(item[1])/memberSplit[index].length
                 } else {
-                    finalBill[member] = item[1]/memberSplit[index].length
+                    finalBill[member] = parseFloat(item[1])/memberSplit[index].length
                 }
             })
         });
@@ -127,6 +140,22 @@ export default function App() {
             finalBill[member] += servicesTotal*(finalBill[member]/totalofItems)
         });
         setFinalBill(finalBill);
+    }
+
+    const validateTotal = () => {
+        let totalOfItems = 0.0;
+        billData['items'].forEach(item => {
+            totalOfItems += parseFloat(item[1])
+        });
+        totalOfItems = totalOfItems.toFixed(2);
+        if(totalOfItems != parseFloat(billData['total'])) {
+            setError("Total(" + billData['total'] + ") must match sum of items(" +totalOfItems.toString() + ")" )
+            return false;
+        }
+        else {
+            setError("")
+            return true;
+        }
     }
 
     const processAndSplitBill = () => {
@@ -158,9 +187,12 @@ export default function App() {
                 billUpload().then(() => {});
                 break;
             case 1:
-                validateMembers();
+                validateTotal() && setActiveStep(activeStep + 1);
                 break;
             case 2:
+                validateMembers();
+                break;
+            case 3:
                 processAndSplitBill();
                 break;
             default:
@@ -189,10 +221,12 @@ export default function App() {
             case 0:
                 return <BillUpload setBillFile={setBillFile}/>;
             case 1:
-                return <AddMembers updateMemberList={updateMemberList}/>;
+                return <VerifyBill billData={billData} setBilldata={setBillData} />
             case 2:
-                return <SplitBill billData={billData} members={members} updateMemberSplit={updateMemberSplit} />;
+                return <AddMembers updateMemberList={updateMemberList}/>;
             case 3:
+                return <SplitBill billData={billData} members={members} updateMemberSplit={updateMemberSplit} />;
+            case 4:
                 return <ViewSplit finalBill={finalBillState}/>;
             default:
                 throw new Error('Unknown step');
@@ -223,6 +257,12 @@ export default function App() {
                     </Stepper>
                     <React.Fragment>
                         {getStepContent(activeStep)}
+                        <PulseLoader
+                            css={override}
+                            size={10}
+                            color={"#f57f17"}
+                            loading={loading}
+                        />
                         <div className={classes.buttons}>
                             {activeStep !== 0 && (
                                 <Button onClick={handleBack} className={classes.button}>

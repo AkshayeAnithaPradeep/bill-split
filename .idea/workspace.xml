@@ -2,19 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6581adb2-80ac-4053-8f08-54dc50dd9f9f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/db.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/addMembers/addMembers.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/billUpload/billUpload.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/copyright/copyright.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/splitBill/splitBill.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/viewSplit/viewSplit.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/verfiyBill/verifyBill.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.json" beforeDir="false" afterPath="$PROJECT_DIR$/db.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/billUpload/billUpload.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/billUpload/billUpload.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/splitBill/splitBill.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/splitBill/splitBill.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,7 +73,7 @@
       <updated>1587501059214</updated>
       <workItem from="1587501062164" duration="277000" />
       <workItem from="1587501460970" duration="26730000" />
-      <workItem from="1587584877222" duration="2923000" />
+      <workItem from="1587584877222" duration="12010000" />
     </task>
     <servers />
   </component>
@@ -97,6 +93,22 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state width="1500" height="221" key="GridCell.Tab.0.bottom" timestamp="1587591073739">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1500" height="221" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1587591073739" />
+    <state width="1500" height="221" key="GridCell.Tab.0.center" timestamp="1587591073739">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1500" height="221" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1587591073739" />
+    <state width="1500" height="221" key="GridCell.Tab.0.left" timestamp="1587591073739">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1500" height="221" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1587591073739" />
+    <state width="1500" height="221" key="GridCell.Tab.0.right" timestamp="1587591073739">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1500" height="221" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1587591073739" />
     <state x="369" y="43" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1587534125139">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -105,5 +117,9 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="425" y="197" key="run.anything.popup/0.0.1536.864@0.0.1536.864" timestamp="1587517540189" />
+    <state x="431" y="185" width="672" height="678" key="search.everywhere.popup" timestamp="1587590931253">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="431" y="185" width="672" height="678" key="search.everywhere.popup/0.0.1536.864@0.0.1536.864" timestamp="1587590931253" />
   </component>
 </project>
